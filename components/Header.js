@@ -1,6 +1,13 @@
 import Image from 'next/image'
 import React from 'react'
-
+import {
+  SearchIcon,
+  PlusCircleIcon,
+  UserGroupIcon,
+  HeartIcon,
+  PaperAirplaneIcon,
+  MenuIcon,
+} from '@heroicons/react/outline'
 const Header = () => {
   return (
     <div>
@@ -13,7 +20,7 @@ const Header = () => {
             layout="fill"
           />
         </div>
-        <div className="relative h-10 w-10 flex-shrink-0 lg:hidden">
+        <div className="relative h-10 w-10 flex-shrink-0 cursor-pointer lg:hidden">
           <Image
             src="https://links.papareact.com/jjm"
             layout="fill"
@@ -21,6 +28,10 @@ const Header = () => {
           />
         </div>
         {/* middle */}
+        <div className="">
+          <div></div>
+          <input type="text" placeholder="Search" />
+        </div>
         {/* right side */}
       </div>
     </div>
