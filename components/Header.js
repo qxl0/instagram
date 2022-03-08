@@ -4,17 +4,18 @@ import React from 'react'
 const Header = () => {
   return (
     <div>
-      {/* left side */}
-      <div>
-        <Image
-          src="https://links.papareact.com/ocw"
-          width={30}
-          height={30}
-          layout="fill"
-        />
+      <div className="flex max-w-6xl justify-between bg-white">
+        {/* left side */}
+        <div className="relative h-24 w-24">
+          <Image
+            src="https://links.papareact.com/ocw"
+            objectFit="contain"
+            layout="fill"
+          />
+        </div>
+        {/* middle */}
+        {/* right side */}
       </div>
-      {/* middle */}
-      {/* right side */}
     </div>
   )
 }
