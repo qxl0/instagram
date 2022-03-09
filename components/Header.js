@@ -50,7 +50,13 @@ const Header = () => {
           <MenuIcon className="h-6 cursor-pointer md:hidden" />
           <div className="navBtn relative">
             <PaperAirplaneIcon className="navBtn rotate-45" />
-            <div className="absolute -top-2 -right-1">3</div>
+            <div
+              className="absolute -top-1 -right-1 flex
+            h-5 w-5 animate-pulse items-center justify-center rounded-full
+             bg-red-500 text-xs font-bold text-white"
+            >
+              3
+            </div>
           </div>
           <PlusCircleIcon className="navBtn" />
           <UserGroupIcon className="navBtn" />
