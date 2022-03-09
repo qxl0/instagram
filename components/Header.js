@@ -48,10 +48,18 @@ const Header = () => {
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon className="navBtn" />
           <MenuIcon className="h-6 cursor-pointer md:hidden" />
-          <PaperAirplaneIcon className="navBtn" />
+          <div className="navBtn relative">
+            <PaperAirplaneIcon className="navBtn rotate-45" />
+            <div className="absolute -top-2 -right-1">3</div>
+          </div>
           <PlusCircleIcon className="navBtn" />
           <UserGroupIcon className="navBtn" />
           <HeartIcon className="navBtn" />
+          <img
+            src="https://links.papareact.com/3ke"
+            alt="profile pic"
+            className="h-10 cursor-pointer rounded-full"
+          />
         </div>
       </div>
     </div>
