@@ -1,9 +1,14 @@
-import { DotsHorizontalIcon } from '@heroicons/react/outline'
+import {
+  ChatIcon,
+  DotsHorizontalIcon,
+  HeartIcon,
+  PaperAirplaneIcon,
+} from '@heroicons/react/outline'
 import React from 'react'
 
 const Post = ({ username, userImg, img, caption }) => {
   return (
-    <div>
+    <div className="my-7 rounded-sm border bg-white">
       {/* header */}
       <div className="flex items-center p-5">
         <img
@@ -15,10 +20,15 @@ const Post = ({ username, userImg, img, caption }) => {
         <DotsHorizontalIcon className="h-5" />
       </div>
       {/* img */}
+      <img src={img} alt="" className="w-full object-cover" />
       {/* buttons */}
+      <div>
+        <HeartIcon className="btn" />
+        <ChatIcon className="btn" />
+        <PaperAirplaneIcon className="btn" />
+      </div>
       {/* comments */}
       {/* input box */}
-      <img src={img} alt="" className="h-48 w-48 rounded-full object-cover" />
     </div>
   )
 }
