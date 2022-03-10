@@ -2,6 +2,7 @@ import {
   BookmarkIcon,
   ChatIcon,
   DotsHorizontalIcon,
+  EmojiHappyIcon,
   HeartIcon,
   PaperAirplaneIcon,
 } from '@heroicons/react/outline'
@@ -40,6 +41,15 @@ const Post = ({ username, userImg, img, caption }) => {
       </div>
       {/* comments */}
       {/* input box */}
+      <form action="" className="flex items-center p-4">
+        <EmojiHappyIcon className="h-7" />
+        <input
+          type="text"
+          placeholder="Add a comment..."
+          className="flex-1 border-none outline-none focus:ring-0"
+        />
+        <button>Post</button>
+      </form>
     </div>
   )
 }
