@@ -1,4 +1,5 @@
 import {
+  BookmarkIcon,
   ChatIcon,
   DotsHorizontalIcon,
   HeartIcon,
@@ -22,10 +23,13 @@ const Post = ({ username, userImg, img, caption }) => {
       {/* img */}
       <img src={img} alt="" className="w-full object-cover" />
       {/* buttons */}
-      <div>
-        <HeartIcon className="btn" />
-        <ChatIcon className="btn" />
-        <PaperAirplaneIcon className="btn" />
+      <div className="flex justify-between">
+        <div className="flex space-x-4">
+          <HeartIcon className="btn" />
+          <ChatIcon className="btn" />
+          <PaperAirplaneIcon className="btn" />
+        </div>
+        <BookmarkIcon className="btn" />
       </div>
       {/* comments */}
       {/* input box */}
