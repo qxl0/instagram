@@ -25,10 +25,17 @@ const Suggestions = () => {
           key={suggestion.id}
         >
           <img
-            className="h-16 w-16 rounded-full border p-[2px]"
+            className="h-10 w-10 rounded-full border p-[2px]"
             src={suggestion.avatar}
             alt=""
           />
+
+          <div className="ml-4 flex-1">
+            <h2 className="text-sm font-semibold">{suggestion.username}</h2>
+            <h3 className="text-sm text-gray-400">
+              Works at {suggestion.company.name}
+            </h3>
+          </div>
         </div>
       ))}
     </div>
