@@ -6,22 +6,17 @@ import Suggestions from './Suggestions'
 
 const Feed = () => {
   return (
-    <div className="mx-auto grid-cols-1 md:max-w-3xl md:grid-cols-2 xl:max-w-6xl xl:grid-cols-3">
-      {/* section */}
+    <main className="mx-auto grid grid-cols-1 md:max-w-3xl md:grid-cols-2 xl:max-w-6xl xl:grid-cols-3">
       <section className="col-span-2">
-        {/* stories */}
         <Stories />
-        {/* Posts */}
         <Posts />
       </section>
-      {/* section */}
-      <section>
+
+      <section className="hidden md:col-span-1 xl:inline-flex">
         <MiniProfile />
-        {/* Mini profile */}
-        {/* suggestions  */}
         <Suggestions />
       </section>
-    </div>
+    </main>
   )
 }
 
