@@ -36,6 +36,7 @@ const Suggestions = () => {
               Works at {suggestion.company.name}
             </h3>
           </div>
+          <button className="text-xs font-bold text-blue-400">Follow</button>
         </div>
       ))}
     </div>
