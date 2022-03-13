@@ -1,7 +1,7 @@
 import React from 'react'
 
 const MiniProfile = () => {
-  return <div>MiniProfile</div>
+  return <div></div>
 }
 
 export default MiniProfile

@@ -2,6 +2,7 @@ import React from 'react'
 import Stories from './Stories'
 import Posts from './Posts'
 import MiniProfile from './MiniProfile'
+import Suggestions from './Suggestions'
 
 const Feed = () => {
   return (
@@ -16,9 +17,10 @@ const Feed = () => {
       {/* section */}
       <section>
         <MiniProfile />
+        {/* Mini profile */}
+        {/* suggestions  */}
+        <Suggestions />
       </section>
-      {/* Mini profile */}
-      {/* suggestions  */}
     </div>
   )
 }
