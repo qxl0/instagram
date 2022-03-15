@@ -20,7 +20,7 @@ const Stories = () => {
         scrollbar-thin scrollbar-thumb-black"
     >
       {session && (
-        <Story img={session.user.image} username={session.user.username} />
+        <Story img={session?.user.image} username={session?.user.username} />
       )}
       {suggestions.map((profile) => {
         return <Story key={profile.id} {...profile} />
