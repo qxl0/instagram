@@ -11,11 +11,8 @@ const Home: NextPage = () => {
         <title>Instagram 2.0</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* header */}
       <Header />
-      {/* feed */}
       <Feed />
-      {/* Modal */}
       <Modal />
     </div>
   )
