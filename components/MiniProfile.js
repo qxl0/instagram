@@ -1,6 +1,8 @@
 import React from 'react'
+import { signOut, useSession } from 'next-auth/react'
 
 const MiniProfile = () => {
+  const { data: session } = useSession()
   return (
     <div className="mt-14 ml-10 flex items-center justify-center">
       <img
