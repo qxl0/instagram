@@ -3,11 +3,12 @@ import { signOut, useSession } from 'next-auth/react'
 
 const MiniProfile = () => {
   const { data: session } = useSession()
+  console.log({ session })
   return (
     <div className="mt-14 ml-10 flex items-center justify-center">
       <img
         className="h-16 w-16 rounded-full border p-[2px]"
-        src="https://links.papareact.com/3ke"
+        src={session?.user.image}
         alt=""
       />
 
