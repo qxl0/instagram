@@ -21,9 +21,13 @@ export default NextAuth({
   },
   callbacks: {
     async session({ session, token, user }) {
-      session.user.username = session.user.name.split(" ").join("").toLocaleUpperCase();
+      session.user.username = session.user.name
+        .split(' ')
+        .join('')
+        .toLocaleUpperCase()
 
-      session.user.uid = token.sub;
+      session.user.uid = token.sub
       return session
-  }
+    },
+  },
 })
