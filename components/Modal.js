@@ -52,6 +52,24 @@ const Modal = () => {
             "
             >
               <div>
+                <div className="mt-3 text-center sm:mt-5">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-medium leading-6 text-gray-900"
+                  >
+                    Upload a photo
+                  </Dialog.Title>
+                  <div>
+                    <input type="file" hidden />
+                  </div>
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Please enter a caption"
+                      className="w-full border-none text-center focus:ring-0"
+                    />
+                  </div>
+                </div>
                 <div className="mt-5 sm:mt-6">
                   <button
                     type="button"
