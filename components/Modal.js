@@ -10,8 +10,8 @@ const Modal = () => {
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
+        onClose={setOpen}
         className="fixed inset-0 z-10 overflow-y-auto"
-        opClose={setOpen}
       >
         <div
           className="flex min-h-[800px] items-end justify-center px-4 pt-4 pb-20 
@@ -50,7 +50,9 @@ const Modal = () => {
             pt-5 pb-4 text-left align-bottom shadow-xl transition-all
             sm:my-8 sm:w-full sm:max-w-sm sm:p-6
             "
-            ></div>
+            >
+              <h1>Hello</h1>{' '}
+            </div>
           </Transition.Child>
         </div>
       </Dialog>
