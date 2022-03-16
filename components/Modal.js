@@ -51,7 +51,19 @@ const Modal = () => {
             sm:my-8 sm:w-full sm:max-w-sm sm:p-6
             "
             >
-              <h1>Hello</h1>{' '}
+              <div>
+                <div className="mt-5 sm:mt-6">
+                  <button
+                    type="button"
+                    className="focus:shadow-outline inline-flex items-center justify-center rounded-md border
+                   border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium
+                    leading-5 text-white transition duration-150 
+                    ease-in-out hover:bg-indigo-500 focus:outline-none"
+                  >
+                    Upload Post
+                  </button>
+                </div>
+              </div>
             </div>
           </Transition.Child>
         </div>
