@@ -4,6 +4,9 @@ import { modalState } from '../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { CameraIcon } from '@heroicons/react/solid'
+import { addDoc, collection } from '@firebase/firestore'
+import { db, storage } from '../firebase'
+import { ref, getDownloadURL } from '@firebase/storage'
 
 const Modal = () => {
   const [open, setOpen] = useRecoilState(modalState)
@@ -36,6 +39,12 @@ const Modal = () => {
       profileImg: session.user.image,
       timetamp: serverTimestamp(),
     })
+
+    console.log('New doc added with ID ', docRef.id)
+
+    const imageRef = ref(storage, `posts/${docRef.id}/image`)
+
+    await uploadString(imageRef, selectedFile)
   }
   return (
     <Transition.Root show={open} as={Fragment}>
