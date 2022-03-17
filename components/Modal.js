@@ -10,7 +10,16 @@ const Modal = () => {
   const filePickerRef = useRef(null)
   const [selectedFile, setSelectedFile] = useState(null)
 
-  const addImageToPost = (e) => {}
+  const addImageToPost = (e) => {
+    const reader = new FileReader()
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0])
+    }
+
+    reader.onload = (readerEvent) => {
+      setSelectedFile(readerEvent.target.result)
+    }
+  }
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -76,7 +85,12 @@ const Modal = () => {
                     Upload a photo
                   </Dialog.Title>
                   <div>
-                    <input ref={filePickerRef} type="file" hidden />
+                    <input
+                      onChange={addImageToPost}
+                      ref={filePickerRef}
+                      type="file"
+                      hidden
+                    />
                   </div>
                   <div>
                     <input
