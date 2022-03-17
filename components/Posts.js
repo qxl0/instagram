@@ -28,16 +28,17 @@ const posts = [
 ]
 const Posts = () => {
   const [posts, setPosts] = React.useState([])
-  useEffect(() => {
-    // snapshot listener
-    const unsub = onSnapshot(
-      query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
-      (snapshot) => {
-        setPosts(snapshot.docs)
-      }
-    )
-    return unsub
-  }, [])
+  useEffect(
+    () =>
+      // snapshot listener
+      onSnapshot(
+        query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
+        (snapshot) => {
+          setPosts(snapshot.docs)
+        }
+      ),
+    [db]
+  )
   return (
     <div>
       {posts.map((post) => (
