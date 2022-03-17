@@ -67,7 +67,12 @@ const Modal = () => {
             >
               <div>
                 {selectedFile ? (
-                  <img src={selectedFile} alt="selected file" />
+                  <img
+                    src={selectedFile}
+                    alt="selected file"
+                    className="w-full cursor-pointer object-contain"
+                    onClick={() => setSelectedFile(null)}
+                  />
                 ) : (
                   <div
                     className="mx-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-full
