@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useRecoilState } from 'recoil'
 import { modalState } from '../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react'
@@ -6,6 +6,8 @@ import { Fragment } from 'react'
 
 const Modal = () => {
   const [open, setOpen] = useRecoilState(modalState)
+  const filePickerRef = useRef()
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -60,7 +62,7 @@ const Modal = () => {
                     Upload a photo
                   </Dialog.Title>
                   <div>
-                    <input type="file" hidden />
+                    <input ref={filePickerRef} type="file" hidden />
                   </div>
                   <div>
                     <input
