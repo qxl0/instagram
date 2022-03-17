@@ -30,6 +30,12 @@ const Modal = () => {
     // get the post ID
     // upload image to firebase storage with post id
     // get download URL from storage and update post with download URL
+    const docRef = await addDoc(collection(db, 'posts'), {
+      username: sessionStorage.user.username,
+      caption: captionRef.current.value,
+      profileImg: session.user.image,
+      timetamp: serverTimestamp(),
+    })
   }
   return (
     <Transition.Root show={open} as={Fragment}>
