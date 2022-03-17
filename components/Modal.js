@@ -1,13 +1,16 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { modalState } from '../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
+import { CameraIcon } from '@heroicons/react/solid'
 
 const Modal = () => {
   const [open, setOpen] = useRecoilState(modalState)
-  const filePickerRef = useRef()
+  const filePickerRef = useRef(null)
+  const [selectedFile, setSelectedFile] = useState(null)
 
+  const addImageToPost = (e) => {}
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -53,6 +56,17 @@ const Modal = () => {
             sm:my-8 sm:w-full sm:max-w-sm sm:p-6
             "
             >
+              <div
+                className="mx-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-full
+              bg-red-100
+              "
+                onClick={() => filePickerRef.current.click()}
+              >
+                <CameraIcon
+                  className="h-6 w-6 text-red-600"
+                  aria-hidden="true"
+                />
+              </div>
               <div>
                 <div className="mt-3 text-center sm:mt-5">
                   <Dialog.Title
