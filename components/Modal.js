@@ -9,7 +9,8 @@ const Modal = () => {
   const [open, setOpen] = useRecoilState(modalState)
   const filePickerRef = useRef(null)
   const [selectedFile, setSelectedFile] = useState(null)
-
+  const captionRef = useRef(null)
+  const [loading, setLoading] = useState(false)
   const addImageToPost = (e) => {
     const reader = new FileReader()
     if (e.target.files[0]) {
@@ -19,6 +20,16 @@ const Modal = () => {
     reader.onload = (readerEvent) => {
       setSelectedFile(readerEvent.target.result)
     }
+  }
+
+  const uploadPost = async () => {
+    if (loading) return
+    setLoading(true)
+
+    // create post, add to filrestore
+    // get the post ID
+    // upload image to firebase storage with post id
+    // get download URL from storage and update post with download URL
   }
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -107,6 +118,7 @@ const Modal = () => {
                   <div>
                     <input
                       type="text"
+                      ref={captionRef}
                       placeholder="Please enter a caption"
                       className="w-full border-none text-center focus:ring-0"
                     />
