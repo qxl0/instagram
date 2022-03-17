@@ -65,17 +65,24 @@ const Modal = () => {
             sm:my-8 sm:w-full sm:max-w-sm sm:p-6
             "
             >
-              <div
-                className="mx-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-full
-              bg-red-100
-              "
-                onClick={() => filePickerRef.current.click()}
-              >
-                <CameraIcon
-                  className="h-6 w-6 text-red-600"
-                  aria-hidden="true"
-                />
+              <div>
+                {selectedFile ? (
+                  <img src={selectedFile} alt="selected file" />
+                ) : (
+                  <div
+                    className="mx-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-full
+                bg-red-100
+                "
+                    onClick={() => filePickerRef.current.click()}
+                  >
+                    <CameraIcon
+                      className="h-6 w-6 text-red-600"
+                      aria-hidden="true"
+                    />
+                  </div>
+                )}
               </div>
+
               <div>
                 <div className="mt-3 text-center sm:mt-5">
                   <Dialog.Title
