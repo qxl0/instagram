@@ -52,6 +52,10 @@ const Modal = () => {
         })
       }
     )
+
+    setOpen(false)
+    setLoading(false)
+    setSelectedFile(null)
   }
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -148,6 +152,7 @@ const Modal = () => {
                 </div>
                 <div className="mt-5 sm:mt-6">
                   <button
+                    onClick={uploadPost}
                     type="button"
                     className="focus:shadow-outline inline-flex items-center justify-center rounded-md border
                    border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium
