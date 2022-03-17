@@ -159,7 +159,7 @@ const Modal = () => {
                     leading-5 text-white transition duration-150 
                     ease-in-out hover:bg-indigo-500 focus:outline-none"
                   >
-                    Upload Post
+                    {loading ? 'Uploading...' : 'Upload Post'}
                   </button>
                 </div>
               </div>
