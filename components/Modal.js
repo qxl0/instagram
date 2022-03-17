@@ -4,12 +4,15 @@ import { modalState } from '../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { CameraIcon } from '@heroicons/react/solid'
-import { addDoc, collection, updateDoc } from '@firebase/firestore'
+import { addDoc, collection, updateDoc, doc } from '@firebase/firestore'
 import { db, storage } from '../firebase'
 import { ref, getDownloadURL } from '@firebase/storage'
-
+import { useSession } from 'next-auth/react'
+import { serverTimestamp } from 'firebase/firestore'
+import { uploadString } from 'firebase/storage'
 const Modal = () => {
   const [open, setOpen] = useRecoilState(modalState)
+  const { data: session } = useSession()
   const filePickerRef = useRef(null)
   const [selectedFile, setSelectedFile] = useState(null)
   const captionRef = useRef(null)
@@ -34,7 +37,7 @@ const Modal = () => {
     // upload image to firebase storage with post id
     // get download URL from storage and update post with download URL
     const docRef = await addDoc(collection(db, 'posts'), {
-      username: sessionStorage.user.username,
+      username: session.user.username,
       caption: captionRef.current.value,
       profileImg: session.user.image,
       timetamp: serverTimestamp(),
