@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Post from './Post'
 import {
   BookmarkIcon,
@@ -9,6 +9,7 @@ import {
   PaperAirplaneIcon,
 } from '@heroicons/react/outline'
 import { HeartIcon as HearIconFilled } from '@heroicons/react/solid'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 const posts = [
   {
     id: '12',
@@ -26,6 +27,17 @@ const posts = [
   },
 ]
 const Posts = () => {
+  const [posts, setPosts] = React.useState([])
+  useEffect(() => {
+    // snapshot listener
+    const unsub = onSnapshot(
+      query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
+      (snapshot) => {
+        setPosts(snapshot.docs)
+      }
+    )
+    return unsub
+  }, [])
   return (
     <div>
       {posts.map((post) => (
