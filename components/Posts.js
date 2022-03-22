@@ -10,6 +10,7 @@ import {
 } from '@heroicons/react/outline'
 import { HeartIcon as HearIconFilled } from '@heroicons/react/solid'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { db } from '../firebase'
 const posts = [
   {
     id: '12',
