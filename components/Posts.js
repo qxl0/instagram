@@ -33,7 +33,7 @@ const Posts = () => {
   const [posts, setPosts] = React.useState([])
   useEffect(() => {
     // snapshot listener
-    const q = collection(db, 'posts')
+    const q = query(collection(db, 'posts'), orderBy('timetamp', 'desc'))
     const unsub = onSnapshot(q, (snapshot) => {
       console.log('snapshot: ', snapshot)
       setPosts(snapshot.docs)
