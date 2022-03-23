@@ -8,10 +8,17 @@ import {
 } from '@heroicons/react/outline'
 import React, { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
-import { onSnapshot, query, orderBy, collection } from 'firebase/firestore'
+import {
+  onSnapshot,
+  query,
+  orderBy,
+  collection,
+  addDoc,
+  serverTimestamp,
+} from 'firebase/firestore'
 import { db } from '../firebase'
 
-const Post = ({ username, userImg, img, caption }) => {
+const Post = ({ id, username, userImg, img, caption }) => {
   const { data: session } = useSession()
   const [comments, setComments] = useState([])
   const [likes, setLikes] = useState([])
@@ -34,10 +41,17 @@ const Post = ({ username, userImg, img, caption }) => {
       [db, id]
   })
 
-  const sendComments = async (e) => {
+  const sendComment = async (e) => {
     e.preventDefault()
     const commentToSend = comment
     setComment('')
+
+    await addDoc(collection(db, 'posts', id, 'comments'), {
+      comment: commentToSend,
+      username: session.user.username,
+      userImage: session.user.image,
+      timestamp: serverTimestamp(),
+    })
   }
   return (
     <div className="my-7 rounded-sm border bg-white">
@@ -78,10 +92,19 @@ const Post = ({ username, userImg, img, caption }) => {
           <EmojiHappyIcon className="h-7" />
           <input
             type="text"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
             placeholder="Add a comment..."
             className="flex-1 border-none outline-none focus:ring-0"
           />
-          <button className="font-semibold text-blue-400">Post</button>
+          <button
+            type="submit"
+            disabled={!comment.trim()}
+            onClick={sendComment}
+            className="font-semibold text-blue-400"
+          >
+            Post
+          </button>
         </form>
       )}
     </div>
