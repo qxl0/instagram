@@ -8,7 +8,8 @@ import {
 } from '@heroicons/react/outline'
 import React, { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
-import { onSnapshot } from 'firebase/firestore'
+import { onSnapshot, query, orderBy, collection } from 'firebase/firestore'
+import { db } from '../firebase'
 
 const Post = ({ username, userImg, img, caption }) => {
   const { data: session } = useSession()
@@ -33,6 +34,11 @@ const Post = ({ username, userImg, img, caption }) => {
       [db, id]
   })
 
+  const sendComments = async (e) => {
+    e.preventDefault()
+    const commentToSend = comment
+    setComment('')
+  }
   return (
     <div className="my-7 rounded-sm border bg-white">
       {/* header */}
