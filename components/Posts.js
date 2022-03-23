@@ -11,6 +11,7 @@ import {
 import { HeartIcon as HearIconFilled } from '@heroicons/react/solid'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { db } from '../firebase'
+import { useSession } from 'next-auth/react'
 // const posts = [
 //   {
 //     id: '12',
@@ -28,19 +29,18 @@ import { db } from '../firebase'
 //   },
 // ]
 const Posts = () => {
+  const { data: session } = useSession()
   const [posts, setPosts] = React.useState([])
-  useEffect(
-    () =>
-      // snapshot listener
-      onSnapshot(
-        query(collection(db, 'posts'), orderBy('timestamp', 'desc')),
-        (snapshot) => {
-          setPosts(snapshot.docs)
-          console.log(posts)
-        }
-      ),
-    [db]
-  )
+  useEffect(() => {
+    // snapshot listener
+    const q = collection(db, 'posts')
+    const unsub = onSnapshot(q, (snapshot) => {
+      console.log('snapshot: ', snapshot)
+      setPosts(snapshot.docs)
+    })
+    return unsub
+  }, [db])
+
   return (
     <div>
       {posts.map((post) => (
