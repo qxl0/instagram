@@ -30,7 +30,10 @@ const Post = ({ id, username, userImg, img, caption }) => {
         collection(db, 'posts', id, 'comments'),
         orderBy('timestamp', 'desc')
       ),
-      (snapshot) => setComments(snapshot.docs)
+      (snapshot) => {
+        setComments(snapshot.docs)
+        console.log({ comments })
+      }
     ),
       [db, id]
   })
@@ -86,6 +89,24 @@ const Post = ({ id, username, userImg, img, caption }) => {
         </p>
       </div>
       {/* comments */}
+      {comments.length > 0 && (
+        <div
+          className="ml-10 h-20 overflow-y-scroll scrollbar-thin
+        scrollbar-thumb-black
+         "
+        >
+          {comments.map((comment) => (
+            <div key={comment.id} className="mb-3 flex items-center space-x-2">
+              <img
+                className="h-7 rounded-full"
+                src={comment.data().image}
+                alt=""
+              />
+              <p>hello</p>
+            </div>
+          ))}
+        </div>
+      )}
       {/* input box */}
       {session && (
         <form action="" className="flex items-center p-4">
