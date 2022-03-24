@@ -32,7 +32,6 @@ const Post = ({ id, username, userImg, img, caption }) => {
       ),
       (snapshot) => {
         setComments(snapshot.docs)
-        console.log({ comments })
       }
     ),
       [db, id]
@@ -99,10 +98,13 @@ const Post = ({ id, username, userImg, img, caption }) => {
             <div key={comment.id} className="mb-3 flex items-center space-x-2">
               <img
                 className="h-7 rounded-full"
-                src={comment.data().image}
+                src={comment.data().userImage}
                 alt=""
               />
-              <p>hello</p>
+              <p className="flex-1 text-sm">
+                <span className="font-bold">{comment.data().username}</span>{' '}
+                {comment.data().comment}
+              </p>
             </div>
           ))}
         </div>
