@@ -39,21 +39,21 @@ const Post = ({ id, username, userImg, img, caption }) => {
       (snapshot) => {
         setComments(snapshot.docs)
       }
-    ),
-      [db, id]
-  })
+    )
+  }, [db, id])
+
   useEffect(() => {
     onSnapshot(collection(db, 'posts', id, 'likes'), (snapshot) =>
       setLikes(snapshot.docs)
-    ),
-      [db, id]
-  })
+    )
+  }, [db, id])
 
   useEffect(() => {
     setHasLiked(
       likes.findIndex((like) => like.id === session?.user?.uid) !== -1
     )
   }, [likes])
+
   const likePost = async () => {
     if (hasLiked) {
       await deleteDoc(doc(db, 'posts', id, 'likes', session.user.uid))
