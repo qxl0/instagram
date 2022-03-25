@@ -15,6 +15,8 @@ import {
   collection,
   addDoc,
   serverTimestamp,
+  setDoc,
+  doc,
 } from 'firebase/firestore'
 import { db } from '../firebase'
 import Moment from 'react-moment'
@@ -44,6 +46,12 @@ const Post = ({ id, username, userImg, img, caption }) => {
       [db, id]
   })
 
+  const likePost = async () => {
+    console.log('tried to save likes', id, session.user.uid)
+    await setDoc(doc(db, 'posts', id, 'likes', session.user.uid), {
+      username: session.user.username,
+    })
+  }
   const sendComment = async (e) => {
     e.preventDefault()
     const commentToSend = comment
@@ -74,7 +82,7 @@ const Post = ({ id, username, userImg, img, caption }) => {
       {session && (
         <div className="flex justify-between px-4 pt-4">
           <div className="flex space-x-4">
-            <HeartIcon className="btn" />
+            <HeartIcon className="btn " onClick={likePost} />
             <ChatIcon className="btn" />
             <PaperAirplaneIcon className="btn" />
           </div>
